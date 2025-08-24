@@ -1,8 +1,9 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const NavBar = () => {
+  
   return (
     <nav className="w-full bg-white shadow-sm border-b border-gray-200">
       <div className="container mx-auto px-6 py-3 flex items-center justify-between">
@@ -16,6 +17,8 @@ const NavBar = () => {
           </Link>
           <Link to="/career" className="hover:text-[#D72050] transition-colors">
             Career
+          </Link>
+           <Link to="/career" className="hover:text-[#D72050] transition-colors">
           </Link>
         </div>
 
@@ -32,7 +35,7 @@ const NavBar = () => {
 
           {/* Login Button */}
           <Link
-            to="/login"
+            to="/auth/login"
             className="bg-gray-800 text-white px-5 py-2 rounded-md hover:bg-gray-900 transition-all duration-300"
           >
             Login
