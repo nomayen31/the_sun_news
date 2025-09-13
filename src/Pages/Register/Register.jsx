@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
+import { updateProfile } from "firebase/auth";
 
 export default function Register({ onSubmit }) {
   const [showPassword, setShowPassword] = useState(false);
   const [accepted, setAccepted] = useState(false);
+  const { createNewUser, setUser } = useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,24 +19,46 @@ export default function Register({ onSubmit }) {
       password: fd.get("password"),
       accepted,
     };
-    if (!accepted) return; // guard
+
+    if (!accepted) return;
+
     onSubmit?.(payload);
+
+    createNewUser(payload.email, payload.password)
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        console.log(user);
+        updateProfile(user, {
+          displayName: payload.name, 
+        })
+          .then(() => {
+            console.log("Display name updated");
+          })
+          .catch((error) => {
+            console.log("Error updating display name:", error);
+          });
+      })
+
+      .catch((error) => {
+        const errorMessage = error.message;
+        console.log(errorMessage);
+      });
   };
 
   return (
     <div className="min-h-[80vh] w-full grid place-items-center px-4">
       <div className="w-full max-w-2xl rounded-3xl bg-white p-6 sm:p-10 shadow-sm">
-        {/* Title */}
         <h1 className="text-center text-3xl sm:text-4xl font-extrabold text-gray-800">
           Register your account
         </h1>
-
         <hr className="mt-6 mb-8 border-gray-200" />
-
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Name */}
           <div className="space-y-2">
-            <label htmlFor="name" className="block text-base font-semibold text-black">
+            <label
+              htmlFor="name"
+              className="block text-base font-semibold text-black"
+            >
               Your Name
             </label>
             <input
@@ -46,9 +71,11 @@ export default function Register({ onSubmit }) {
             />
           </div>
 
-          {/* Photo URL */}
           <div className="space-y-2">
-            <label htmlFor="photoURL" className="block text-base font-semibold text-black">
+            <label
+              htmlFor="photoURL"
+              className="block text-base font-semibold text-black"
+            >
               Photo URL
             </label>
             <input
@@ -60,9 +87,11 @@ export default function Register({ onSubmit }) {
             />
           </div>
 
-          {/* Email */}
           <div className="space-y-2">
-            <label htmlFor="email" className="block text-base font-semibold text-black">
+            <label
+              htmlFor="email"
+              className="block text-base font-semibold text-black"
+            >
               Email
             </label>
             <input
@@ -75,9 +104,11 @@ export default function Register({ onSubmit }) {
             />
           </div>
 
-          {/* Password */}
           <div className="space-y-2">
-            <label htmlFor="password" className="block text-base font-semibold text-black">
+            <label
+              htmlFor="password"
+              className="block text-base font-semibold text-black"
+            >
               Password
             </label>
             <div className="relative">
@@ -95,12 +126,15 @@ export default function Register({ onSubmit }) {
                 className="absolute inset-y-0 right-3 flex items-center text-gray-500 hover:text-gray-700"
                 aria-label={showPassword ? "Hide password" : "Show password"}
               >
-                {showPassword ? <FiEyeOff className="h-5 w-5" /> : <FiEye className="h-5 w-5" />}
+                {showPassword ? (
+                  <FiEyeOff className="h-5 w-5" />
+                ) : (
+                  <FiEye className="h-5 w-5" />
+                )}
               </button>
             </div>
           </div>
 
-          {/* T&C */}
           <label className="flex items-center gap-3 text-sm text-gray-700 select-none">
             <input
               type="checkbox"
@@ -109,11 +143,11 @@ export default function Register({ onSubmit }) {
               onChange={(e) => setAccepted(e.target.checked)}
             />
             <span>
-              Accept <span className="font-semibold">Term &amp; Conditions</span>
+              Accept{" "}
+              <span className="font-semibold">Term &amp; Conditions</span>
             </span>
           </label>
 
-          {/* Submit */}
           <button
             type="submit"
             disabled={!accepted}
@@ -122,9 +156,8 @@ export default function Register({ onSubmit }) {
             Register
           </button>
         </form>
-         {/* Footer link */}
         <p className="mt-6 text-center text-sm text-gray-600">
-          Do you  Have An Account ?{" "}
+          Do you Have An Account ?{" "}
           <Link
             to="/auth/login"
             className="font-semibold text-red-500 hover:underline"
