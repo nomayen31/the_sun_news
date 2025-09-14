@@ -9,6 +9,7 @@ import {
   FaStarHalfAlt,
   FaRegStar,
 } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const formatDate = (d) =>
   new Date(d).toLocaleDateString(undefined, {
@@ -44,6 +45,7 @@ export default function NewsCard({ singleNews }) {
     total_view,
     author,
     others_info,
+    _id
   } = singleNews;
 
   // Fake tags from the details line like in your screenshot.
@@ -112,9 +114,9 @@ export default function NewsCard({ singleNews }) {
           {details && details.length > 210 ? "…" : ""}
         </p>
 
-        <button className="text-sm font-semibold text-indigo-600 hover:underline">
+        <Link to={`/news/${singleNews._id}`} className="text-sm font-semibold text-indigo-600 hover:underline">
           Read More
-        </button>
+        </Link>
       </div>
 
       {/* Footer */}

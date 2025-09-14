@@ -2,8 +2,6 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { AuthContext } from "../../Provider/AuthProvider";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 export default function Login({ onSubmit }) {
   const [showPassword, setShowPassword] = useState(false);
@@ -23,16 +21,7 @@ export default function Login({ onSubmit }) {
       .then((userCredential) => {
         const user = userCredential.user;
         setUser(user);
-        toast.success('Login successful!', {
-          position: toast.POSITION.TOP_CENTER, // Position toast in the center of the screen
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        });
+        alert('Login successful!');
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -41,27 +30,9 @@ export default function Login({ onSubmit }) {
 
         // Displaying specific error messages
         if (errorCode === 'auth/invalid-email') {
-          toast.error('Invalid email format!', {
-            position: toast.POSITION.TOP_CENTER,
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
-          });
+          alert('Invalid email format!');
         } else {
-          toast.error('Login failed. Please check your credentials.', {
-            position: toast.POSITION.TOP_CENTER,
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
-          });
+          alert('Login failed. Please check your credentials.');
         }
       });
   };
@@ -129,9 +100,6 @@ export default function Login({ onSubmit }) {
           </Link>
         </p>
       </div>
-
-      {/* Toast notifications container */}
-      <ToastContainer />
     </div>
   );
 }

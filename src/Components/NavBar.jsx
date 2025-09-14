@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import { useContext } from "react";
-import { toast } from 'react-toastify'; // Importing toast
 
 const NavBar = () => {
   const { user, logout, auth } = useContext(AuthContext);
@@ -9,21 +8,11 @@ const NavBar = () => {
   const handleLogout = () => {
     logout(auth)
       .then(() => {
-        // Show a success toast after successful logout
-        toast.success("You have successfully logged out!", {
-          position: toast.POSITION.TOP_RIGHT,
-          autoClose: 5000,
-          hideProgressBar: true,
-        });
+        alert("You have successfully logged out!");
       })
       .catch((error) => {
-        // Show an error toast if there's an issue logging out
         console.log("Error logging out:", error);
-        toast.error("An error occurred while logging out.", {
-          position: toast.POSITION.TOP_RIGHT,
-          autoClose: 5000,
-          hideProgressBar: true,
-        });
+        alert("An error occurred while logging out.");
       });
   };
 
@@ -60,7 +49,7 @@ const NavBar = () => {
             </Link>
           ) : (
             <button
-              onClick={handleLogout} // Call the logout function
+              onClick={handleLogout}
               className="bg-gray-800 text-white px-5 py-2 rounded-md hover:bg-gray-900 transition-all duration-300"
             >
               Logout
