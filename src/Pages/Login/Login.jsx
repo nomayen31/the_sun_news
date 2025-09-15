@@ -28,7 +28,6 @@ export default function Login({ onSubmit }) {
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
 
-        // Displaying specific error messages
         if (errorCode === 'auth/invalid-email') {
           alert('Invalid email format!');
         } else {
@@ -38,17 +37,19 @@ export default function Login({ onSubmit }) {
   };
 
   return (
-    <div className="min-h-[70vh] w-full grid place-items-center px-4">
-      <div className="w-full max-w-xl rounded-3xl bg-white p-6 sm:p-10 shadow-sm">
-        <h1 className="text-center text-3xl sm:text-4xl font-extrabold text-gray-800">
-          Login to your account
+    <div className="min-h-[70vh] w-full grid place-items-center px-4 py-12 bg-gray-900">
+      <div className="w-full max-w-xl rounded-3xl bg-white p-8 sm:p-12 shadow-2xl border-4 border-purple-500 transform transition-all duration-300 hover:scale-[1.01]">
+        <h1 className="text-center text-3xl sm:text-4xl font-extrabold text-gray-800 mb-2">
+          Welcome Back!
         </h1>
-
-        <hr className="mt-6 mb-8 border-gray-200" />
+        <p className="text-center text-gray-500 text-base mb-8">
+          Login to your account
+        </p>
 
         <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Email Input */}
           <div className="space-y-2">
-            <label htmlFor="email" className="block text-base font-semibold text-black">
+            <label htmlFor="email" className="block text-base font-semibold text-gray-800">
               Email address
             </label>
             <input
@@ -57,12 +58,13 @@ export default function Login({ onSubmit }) {
               type="email"
               required
               placeholder="Enter your email address"
-              className="w-full rounded-lg bg-gray-100 placeholder-gray-400 px-4 py-3 text-black outline-none ring-1 ring-transparent focus:ring-2 focus:ring-gray-400"
+              className="w-full rounded-full bg-gray-100 placeholder-gray-400 px-6 py-3 text-black outline-none ring-2 ring-transparent focus:ring-purple-500 transition-all"
             />
           </div>
 
+          {/* Password Input */}
           <div className="space-y-2">
-            <label htmlFor="password" className="block text-base font-semibold text-black">
+            <label htmlFor="password" className="block text-base font-semibold text-gray-800">
               Password
             </label>
             <div className="relative">
@@ -72,12 +74,12 @@ export default function Login({ onSubmit }) {
                 type={showPassword ? "text" : "password"}
                 required
                 placeholder="Enter your password"
-                className="w-full rounded-lg bg-gray-100 placeholder-gray-400 px-4 py-3 pr-11 text-black outline-none ring-1 ring-transparent focus:ring-2 focus:ring-gray-400"
+                className="w-full rounded-full bg-gray-100 placeholder-gray-400 px-6 py-3 pr-12 text-black outline-none ring-2 ring-transparent focus:ring-purple-500 transition-all"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword((prev) => !prev)}
-                className="absolute inset-y-0 right-3 flex items-center text-gray-500 hover:text-gray-700"
+                className="absolute inset-y-0 right-4 flex items-center text-gray-500 hover:text-purple-600 transition"
                 aria-label={showPassword ? "Hide password" : "Show password"}
               >
                 {showPassword ? <FiEyeOff className="h-5 w-5" /> : <FiEye className="h-5 w-5" />}
@@ -85,20 +87,26 @@ export default function Login({ onSubmit }) {
             </div>
           </div>
 
+          {/* Login Button */}
           <button
             type="submit"
-            className="w-full rounded-lg bg-gray-800 text-white py-3.5 font-semibold tracking-wide hover:bg-gray-700 active:scale-[0.99] transition"
+            className="w-full rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-4 font-bold tracking-wide shadow-lg transform transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl active:scale-[0.99]"
           >
             Login
           </button>
         </form>
 
-        <p className="mt-6 text-center text-sm text-gray-600">
-          Don’t Have An Account?{" "}
-          <Link to="/auth/register" className="font-semibold text-red-500 hover:underline">
-            Register
-          </Link>
-        </p>
+        <div className="flex justify-between items-center mt-6">
+          <a href="#" className="text-sm font-medium text-purple-600 hover:underline">
+            Forgot Password?
+          </a>
+          <p className="text-sm text-gray-600">
+            New here?{" "}
+            <Link to="/auth/register" className="font-bold text-red-500 hover:underline">
+              Register
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );
