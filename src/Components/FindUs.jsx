@@ -3,25 +3,25 @@ import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
 
 const FindUs = () => {
   return (
-    <div className="w-full bg-white rounded-xl shadow-lg p-5 sm:p-6 my-2">
+    <div className="w-full bg-white rounded-2xl shadow-xl p-6 my-4 transition-all duration-300 transform hover:scale-[1.01] hover:shadow-2xl">
       {/* Title */}
-      <h2 className="text-lg sm:text-xl font-semibold text-gray-800 mb-5 border-b pb-2">
+      <h2 className="text-2xl font-bold text-gray-800 mb-6 border-b-4 border-indigo-500 pb-2">
         Find Us On
       </h2>
 
       {/* Social Links */}
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-4">
         {/* Facebook */}
         <a
           href="https://facebook.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-4 border border-gray-200 rounded-lg w-full px-5 py-3 hover:bg-blue-50 transition-all duration-300"
+          className="flex items-center gap-4 rounded-xl w-full px-6 py-4 bg-blue-600 text-white shadow-lg transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl"
         >
-          <div className="flex items-center justify-center w-10 h-10 bg-blue-100 rounded-full">
-            <FaFacebookF className="text-blue-600 text-lg" />
+          <div className="flex items-center justify-center w-12 h-12 bg-white rounded-full">
+            <FaFacebookF className="text-blue-600 text-xl" />
           </div>
-          <span className="text-gray-700 font-medium text-base">Facebook</span>
+          <span className="font-semibold text-lg">Facebook</span>
         </a>
 
         {/* Twitter */}
@@ -29,12 +29,12 @@ const FindUs = () => {
           href="https://twitter.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-4 border border-gray-200 rounded-lg w-full px-5 py-3 hover:bg-blue-50 transition-all duration-300"
+          className="flex items-center gap-4 rounded-xl w-full px-6 py-4 bg-black text-white shadow-lg transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl"
         >
-          <div className="flex items-center justify-center w-10 h-10 bg-blue-100 rounded-full">
-            <FaTwitter className="text-blue-500 text-lg" />
+          <div className="flex items-center justify-center w-12 h-12 bg-white rounded-full">
+            <FaTwitter className="text-black text-xl" />
           </div>
-          <span className="text-gray-700 font-medium text-base">Twitter</span>
+          <span className="font-semibold text-lg">Twitter</span>
         </a>
 
         {/* Instagram */}
@@ -42,12 +42,12 @@ const FindUs = () => {
           href="https://instagram.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-4 border border-gray-200 rounded-lg w-full px-5 py-3 hover:bg-pink-50 transition-all duration-300"
+          className="flex items-center gap-4 rounded-xl w-full px-6 py-4 bg-gradient-to-tr from-yellow-400 to-pink-500 text-white shadow-lg transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl"
         >
-          <div className="flex items-center justify-center w-10 h-10 bg-pink-100 rounded-full">
-            <FaInstagram className="text-pink-500 text-lg" />
+          <div className="flex items-center justify-center w-12 h-12 bg-white rounded-full">
+            <FaInstagram className="text-pink-500 text-xl" />
           </div>
-          <span className="text-gray-700 font-medium text-base">Instagram</span>
+          <span className="font-semibold text-lg">Instagram</span>
         </a>
       </div>
     </div>

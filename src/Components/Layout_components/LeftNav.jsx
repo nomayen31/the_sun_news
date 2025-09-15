@@ -11,22 +11,22 @@ const LeftNav = () => {
   }, []);
 
   return (
-    <div>
-      <h2 className="font-semibold">
-        All Category ({categories.length})
+    <div className="bg-white rounded-2xl shadow-xl p-6 md:p-8 relative z-10">
+      <h2 className="text-2xl font-bold text-gray-800 border-b-2 border-purple-500 pb-3 mb-6">
+        All Categories
       </h2>
 
-      <div className="flex flex-col gap-3 w-full max-w-sm mx-auto mt-4">
+      <div className="flex flex-col gap-4">
         {categories.map((category) => (
           <NavLink
             key={category.category_id}
             to={`/category/${category.category_id}`}
             className={({ isActive }) =>
-              `w-full rounded-lg px-5 py-3 font-medium transition-all duration-300 ease-in-out border shadow-md
+              `w-full rounded-xl px-6 py-4 font-semibold text-lg transition-all duration-300 ease-in-out transform hover:scale-[1.02]
               ${
                 isActive
-                  ? "bg-[#D72050] text-white border-[#D72050] shadow-lg"
-                  : "bg-white text-gray-700 border-gray-300 hover:bg-[#D72050] hover:text-white hover:shadow-lg"
+                  ? "bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-xl scale-105"
+                  : "bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-md"
               }`
             }
           >

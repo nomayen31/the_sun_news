@@ -16,25 +16,33 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="w-full bg-gradient-to-r from-[#1a1a1a] via-[#222] to-[#1a1a1a] shadow-lg ">
-      <div className="flex flex-col items-center justify-center gap-3 py-6 text-center">
+    <header className="w-full bg-gray-900 border-b-4 border-yellow-500 shadow-2xl overflow-hidden mb-10">
+      <div className="flex flex-col items-center justify-center gap-4 py-8 text-center relative z-10">
         {/* Logo */}
         <img
           src={logo}
           alt="logo"
-          className="w-[250px] md:w-[320px] transition-transform duration-500 hover:scale-110 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]"
+          className="w-[280px] md:w-[380px] transition-transform duration-500 hover:scale-105 filter drop-shadow-[0_0_25px_rgba(253,224,71,0.5)]"
         />
 
         {/* Tagline */}
-        <h2 className="text-gray-300 text-sm md:text-base font-medium italic tracking-wide flex items-center gap-2">
-          <FaRegNewspaper className="text-[#D72050] text-xl animate-pulse" />
-          Journalism Without Fear or Favour
+        <h2 className="text-gray-300 text-lg md:text-xl font-bold tracking-wider flex items-center gap-3">
+          <FaRegNewspaper className="text-yellow-500 text-2xl animate-spin-slow" />
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-orange-500">
+            Journalism Without Fear or Favour
+          </span>
         </h2>
 
         {/* Date & Time */}
-        <div className="bg-[#D72050]/10 border border-[#D72050]/30 text-gray-200 px-6 py-1 rounded-full shadow-md text-xs md:text-sm font-semibold tracking-wide">
+        <div className="bg-gray-800 text-yellow-300 px-8 py-2 rounded-full shadow-lg text-sm md:text-base font-semibold tracking-wider border-2 border-yellow-500 animate-fade-in">
           {time}
         </div>
+      </div>
+
+      {/* Background Shapes */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-yellow-500/10 rounded-full mix-blend-multiply filter blur-2xl animate-blob"></div>
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-orange-500/10 rounded-full mix-blend-multiply filter blur-2xl animate-blob animation-delay-2000"></div>
       </div>
     </header>
   );
