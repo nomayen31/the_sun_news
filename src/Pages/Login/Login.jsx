@@ -1,11 +1,15 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 export default function Login({ onSubmit }) {
+  const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const { signInUser, setUser } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  console.log('location', location);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,17 +26,11 @@ export default function Login({ onSubmit }) {
         const user = userCredential.user;
         setUser(user);
         alert('Login successful!');
+        navigate(`${location.state ? location.state : "/"}`);
       })
       .catch((error) => {
         const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
-
-        if (errorCode === 'auth/invalid-email') {
-          alert('Invalid email format!');
-        } else {
-          alert('Login failed. Please check your credentials.');
-        }
+        setError(errorCode);
       });
   };
 
@@ -95,6 +93,13 @@ export default function Login({ onSubmit }) {
             Login
           </button>
         </form>
+
+        {/* The error message should be placed here, just after the form */}
+        {error && (
+          <p className="text-center mt-4 text-red-500 text-sm font-semibold">
+            {error}
+          </p>
+        )}
 
         <div className="flex justify-between items-center mt-6">
           <a href="#" className="text-sm font-medium text-purple-600 hover:underline">

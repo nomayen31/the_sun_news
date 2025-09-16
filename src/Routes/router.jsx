@@ -7,45 +7,55 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import NewsDetails from "../Pages/NewsDetails/NewsDetails";
 import ErrorPage from "../Pages/ErrorPage";
+import PriviteRoute from "../Provider/PriviteRoute";
+import UpdateProfile from "../Pages/UpdateProfile/UpdateProfile";
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <HomeLayouts/>,
-    children:[
+    element: <HomeLayouts />,
+    children: [
       {
-        path:'' ,
+        path: '',
         element: <Navigate to={"/category/01"} />
       },
       {
-        path:'category/:id',
-        element: <CategoryNews/>,
-        loader:({params}) => fetch(`https://openapi.programming-hero.com/api/news/category/${params.id}`)
+        path: 'category/:id',
+        element: <CategoryNews />,
+        loader: ({ params }) => fetch(`https://openapi.programming-hero.com/api/news/category/${params.id}`)
       }
     ]
   },
   {
     path: '/news/:id',
-    element: <NewsDetails/>,
-    loader:({params})=>fetch(`https://openapi.programming-hero.com/api/news/${params.id}`)
+    element: <PriviteRoute>
+      <NewsDetails />
+    </PriviteRoute>,
+    loader: ({ params }) => fetch(`https://openapi.programming-hero.com/api/news/${params.id}`)
   },
   {
     path: '/auth',
-    element: <AuthLayout/>,
-    children:[
+    element: <AuthLayout />,
+    children: [
       {
-        path:'/auth/login',
-        element:<Login/>
+        path: '/auth/login',
+        element: <Login />
       },
       {
-        path:'/auth/register',
-        element:<Register/>
+        path: '/auth/register',
+        element: <Register />
+      },
+      {
+        path:'/auth/updateprofile',
+        element:<PriviteRoute>
+          <UpdateProfile/>
+        </PriviteRoute>
       }
     ]
   },
   {
     path: '*',
-    element: <ErrorPage/>
+    element: <ErrorPage />
   }
 ]);
 

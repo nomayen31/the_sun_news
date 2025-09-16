@@ -54,9 +54,20 @@ const NavBar = () => {
         {/* User Profile & Auth Buttons */}
         <div className="flex items-center gap-4">
           {user && (
-            <span className="text-gray-700 font-medium mr-2 hidden sm:inline">
-              Hi, <strong className="text-indigo-600">{user.displayName}</strong>
-            </span>
+            <>
+              {/* This is the updated "Update Profile" link */}
+              <Link 
+                to="/auth/updateprofile" 
+                className="group relative font-bold text-green-500 transition-colors hover:text-green-700"
+              >
+                Update Profile
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-green-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+              </Link>
+              
+              <span className="text-gray-700 font-medium mr-2 hidden sm:inline">
+                Hi, <strong className="text-indigo-600">{user.displayName}</strong>
+              </span>
+            </>
           )}
 
           <div className="w-12 h-12 rounded-full border-4 border-indigo-500 overflow-hidden cursor-pointer transition-all duration-300 transform hover:scale-110 hover:ring-2 hover:ring-indigo-300">
