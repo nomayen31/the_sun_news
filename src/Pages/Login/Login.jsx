@@ -53,6 +53,7 @@ export default function Login({ onSubmit }) {
               id="email"
               name="email"
               type="email"
+              value="test@daily.com"
               required
               placeholder="Enter your email address"
               className="w-full rounded-full bg-gray-100 placeholder-gray-400 px-6 py-3 text-black outline-none ring-2 ring-transparent focus:ring-purple-500 transition-all"
@@ -67,6 +68,7 @@ export default function Login({ onSubmit }) {
               <input
                 id="password"
                 name="password"
+                value="123456"
                 type={showPassword ? "text" : "password"}
                 required
                 placeholder="Enter your password"
