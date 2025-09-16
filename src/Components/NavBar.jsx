@@ -11,7 +11,7 @@ const NavBar = () => {
         alert("You have successfully logged out!");
       })
       .catch((error) => {
-        console.log("Error logging out:", error);
+        // console.log("Error logging out:", error);
         alert("An error occurred while logging out.");
       });
   };

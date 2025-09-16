@@ -10,7 +10,7 @@ import ErrorPage from "../Pages/ErrorPage";
 import PriviteRoute from "../Provider/PriviteRoute";
 import UpdateProfile from "../Pages/UpdateProfile/UpdateProfile";
 import About from "../Pages/About/About";
-import Career from "../Pages/Career/Career";
+import Loading from "../Provider/Loading";
 
 const router = createBrowserRouter([
   {
@@ -29,7 +29,8 @@ const router = createBrowserRouter([
       {
         path: 'category/:id',
         element: <CategoryNews />,
-        loader: ({ params }) => fetch(`https://openapi.programming-hero.com/api/news/category/${params.id}`)
+        loader: ({ params }) => fetch(`https://openapi.programming-hero.com/api/news/category/${params.id}`),
+        hydrateFallbackElement:<Loading/>
       }
     ]
   },
@@ -38,7 +39,8 @@ const router = createBrowserRouter([
     element: <PriviteRoute>
       <NewsDetails />
     </PriviteRoute>,
-    loader: ({ params }) => fetch(`https://openapi.programming-hero.com/api/news/${params.id}`)
+    loader: ({ params }) => fetch(`https://openapi.programming-hero.com/api/news/${params.id}`),
+    hydrateFallbackElement:<Loading/>
   },
   {
     path: '/auth',

@@ -45,7 +45,7 @@ const UpdateProfile = () => {
             })
             .catch((error) => {
                 setError(error.message);
-                console.error("Error updating profile:", error);
+                // console.error("Error updating profile:", error);
             });
     };
 

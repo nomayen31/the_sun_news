@@ -9,7 +9,7 @@ export default function Login({ onSubmit }) {
   const { signInUser, setUser } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
-  console.log('location', location);
+  // console.log('location', location);
 
   const handleSubmit = (e) => {
     e.preventDefault();

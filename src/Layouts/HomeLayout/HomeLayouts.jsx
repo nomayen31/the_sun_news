@@ -4,9 +4,11 @@ import LatestNews from "../../Components/LatestNews/LatestNews";
 import NavBar from "../../Components/NavBar";
 import LeftNav from "../../Components/Layout_components/LeftNav";
 import RightNav from "../../Components/Layout_components/RightNav";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigation } from "react-router-dom";
+import Loading from "../../Provider/Loading";
 
 const HomeLayouts = () => {
+  const {state}= useNavigation();
   return (
     <div>
       <header>
@@ -23,7 +25,7 @@ const HomeLayouts = () => {
                 <LeftNav/>
             </aside>
             <section className="col-span-6">
-              <Outlet></Outlet>
+             {state == "loading" ? <Loading/> :  <Outlet></Outlet>}
             </section>
             <aside className="col-span-3">
               <RightNav/>
