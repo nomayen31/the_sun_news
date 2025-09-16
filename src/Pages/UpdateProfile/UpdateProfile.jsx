@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 import { AuthContext } from '../../Provider/AuthProvider';
+import { useNavigate } from 'react-router-dom';
 
 const UpdateProfile = () => {
     const { user, updateUser, setUser } = useContext(AuthContext);
@@ -11,6 +12,7 @@ const UpdateProfile = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [isConfirmed, setIsConfirmed] = useState(false);
     const [error, setError] = useState('');
+    const navigate = useNavigate('')
 
     useEffect(() => {
         if (user) {
@@ -36,10 +38,10 @@ const UpdateProfile = () => {
 
         updateUser(updatedData)
             .then(() => {
-                // Update the state of the user in your AuthContext
-                // This ensures the UI reflects the changes immediately
+        
                 setUser({ ...user, ...updatedData }); 
                 alert('Profile updated successfully!');
+                navigate('/')
             })
             .catch((error) => {
                 setError(error.message);

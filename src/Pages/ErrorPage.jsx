@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import NavBar from '../Components/NavBar';
 
 const ErrorPage = () => {
   return (
+    <div>
+      <NavBar></NavBar>
     <div className="min-h-screen w-full flex items-center justify-center bg-gray-900 text-white p-6">
       <div className="text-center space-y-8">
         <div className="bg-gradient-to-r from-red-500 to-rose-600 inline-block text-transparent bg-clip-text">
@@ -24,6 +27,7 @@ const ErrorPage = () => {
           Go to Homepage
         </Link>
       </div>
+    </div>
     </div>
   );
 };

@@ -15,16 +15,16 @@ const NewsDetailsCard = ({ news }) => {
   return (
     <div className="bg-white rounded-3xl shadow-2xl overflow-hidden md:col-span-9 p-6">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {/* Main Content Column */}
+ 
         <div className="md:col-span-2">
-          {/* Featured Image */}
+
           <div className="relative mb-6">
             <img 
               src={image_url || thumbnail_url} 
               alt={title} 
               className="w-full h-auto object-cover rounded-2xl shadow-lg"
             />
-            {/* Badges Overlay */}
+
             <div className="absolute top-4 left-4 flex space-x-2">
               {others_info?.is_todays_pick && (
                 <span className="bg-yellow-400 text-yellow-900 px-4 py-1 rounded-full text-xs font-bold shadow-md transform -rotate-2">
@@ -39,20 +39,18 @@ const NewsDetailsCard = ({ news }) => {
             </div>
           </div>
           
-          {/* Article Title */}
+
           <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-4">
             {title}
           </h2>
-          
-          {/* Article Details */}
+
           <div className="text-lg text-gray-700 leading-relaxed space-y-4">
             <p>{details}</p>
           </div>
         </div>
 
-        {/* Sidebar/Metadata Column */}
         <div className="md:col-span-1 bg-gradient-to-br from-gray-50 to-gray-200 rounded-2xl p-6 shadow-inner">
-          {/* Author Card */}
+
           <div className="bg-white rounded-xl shadow-lg p-6 mb-8 transform hover:scale-105 transition-transform duration-300">
             <div className="flex flex-col items-center text-center">
               <img 
@@ -65,7 +63,7 @@ const NewsDetailsCard = ({ news }) => {
             </div>
           </div>
 
-          {/* Stats Card */}
+
           <div className="bg-white rounded-xl shadow-lg p-6 transform hover:scale-105 transition-transform duration-300">
             <h4 className="text-lg font-bold text-gray-800 mb-4">Article Statistics</h4>
             <div className="space-y-4">

@@ -4,14 +4,14 @@ import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
 const FindUs = () => {
   return (
     <div className="w-full bg-white rounded-2xl shadow-xl p-6 my-4 transition-all duration-300 transform hover:scale-[1.01] hover:shadow-2xl">
-      {/* Title */}
+
       <h2 className="text-2xl font-bold text-gray-800 mb-6 border-b-4 border-indigo-500 pb-2">
         Find Us On
       </h2>
 
-      {/* Social Links */}
+
       <div className="flex flex-col gap-4">
-        {/* Facebook */}
+
         <a
           href="https://facebook.com"
           target="_blank"
@@ -24,7 +24,7 @@ const FindUs = () => {
           <span className="font-semibold text-lg">Facebook</span>
         </a>
 
-        {/* Twitter */}
+
         <a
           href="https://twitter.com"
           target="_blank"
@@ -37,7 +37,7 @@ const FindUs = () => {
           <span className="font-semibold text-lg">Twitter</span>
         </a>
 
-        {/* Instagram */}
+
         <a
           href="https://instagram.com"
           target="_blank"

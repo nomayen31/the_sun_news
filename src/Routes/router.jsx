@@ -9,6 +9,8 @@ import NewsDetails from "../Pages/NewsDetails/NewsDetails";
 import ErrorPage from "../Pages/ErrorPage";
 import PriviteRoute from "../Provider/PriviteRoute";
 import UpdateProfile from "../Pages/UpdateProfile/UpdateProfile";
+import About from "../Pages/About/About";
+import Career from "../Pages/Career/Career";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +21,11 @@ const router = createBrowserRouter([
         path: '',
         element: <Navigate to={"/category/01"} />
       },
+      {
+        path:'/about',
+        element:<About/>
+      },
+
       {
         path: 'category/:id',
         element: <CategoryNews />,

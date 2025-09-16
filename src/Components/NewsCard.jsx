@@ -65,7 +65,7 @@ export default function NewsCard({ singleNews }) {
   return (
     <>
       <article className="relative overflow-hidden rounded-3xl bg-white shadow-2xl">
-        {/* Featured Image Section */}
+ 
         <div className="relative">
           <img
             src={image_url || thumbnail_url}
@@ -73,7 +73,6 @@ export default function NewsCard({ singleNews }) {
             className="h-64 w-full object-cover rounded-t-3xl"
             loading="lazy"
           />
-          {/* Colorful Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-gray-900/50 to-transparent rounded-t-3xl"></div>
           {/* Trending Badge */}
           {others_info?.is_trending && (
@@ -84,7 +83,6 @@ export default function NewsCard({ singleNews }) {
         </div>
 
         <div className="p-6 space-y-4">
-          {/* Author & Actions Header */}
           <header className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <img
@@ -111,7 +109,6 @@ export default function NewsCard({ singleNews }) {
             </div>
           </header>
 
-          {/* Title and Details */}
           <div className="space-y-3">
             <Link to={`/news/${_id}`}>
               <h2 className="text-3xl font-extrabold leading-snug text-gray-900 transition-colors hover:text-purple-600">
@@ -124,14 +121,12 @@ export default function NewsCard({ singleNews }) {
             </p>
           </div>
 
-          {/* Tag Cloud */}
           <div className="flex flex-wrap gap-2 pt-2">
             {tags.map((t) => (
               <Tag key={t}>{t}</Tag>
             ))}
           </div>
 
-          {/* Footer with Rating & Views */}
           <footer className="flex items-center justify-between border-t border-gray-100 pt-4 mt-4">
             <div className="flex items-center gap-2">
               <Stars value={rating?.number ?? 0} />
@@ -157,7 +152,6 @@ export default function NewsCard({ singleNews }) {
         </div>
       </article>
 
-      {/* --- Modal Section --- */}
       {isModalOpen && (
         <div 
           className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm" // Updated background
@@ -167,7 +161,6 @@ export default function NewsCard({ singleNews }) {
             className="bg-white rounded-3xl p-10 sm:p-12 text-center relative max-w-lg mx-auto transform scale-100 transition-transform duration-300"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close Button */}
             <button
               onClick={() => setIsModalOpen(false)}
               className="absolute top-4 right-4 text-gray-500 hover:text-gray-900 transition"

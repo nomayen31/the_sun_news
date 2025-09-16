@@ -45,7 +45,6 @@ export default function Login({ onSubmit }) {
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Email Input */}
           <div className="space-y-2">
             <label htmlFor="email" className="block text-base font-semibold text-gray-800">
               Email address
@@ -60,7 +59,6 @@ export default function Login({ onSubmit }) {
             />
           </div>
 
-          {/* Password Input */}
           <div className="space-y-2">
             <label htmlFor="password" className="block text-base font-semibold text-gray-800">
               Password
@@ -85,7 +83,7 @@ export default function Login({ onSubmit }) {
             </div>
           </div>
 
-          {/* Login Button */}
+         
           <button
             type="submit"
             className="w-full rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-4 font-bold tracking-wide shadow-lg transform transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl active:scale-[0.99]"
@@ -94,7 +92,6 @@ export default function Login({ onSubmit }) {
           </button>
         </form>
 
-        {/* The error message should be placed here, just after the form */}
         {error && (
           <p className="text-center mt-4 text-red-500 text-sm font-semibold">
             {error}

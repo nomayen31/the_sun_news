@@ -19,14 +19,13 @@ const NavBar = () => {
   return (
     <nav className="w-full bg-white shadow-xl border-b-4 border-indigo-500 relative z-50">
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Logo/Brand Section */}
+
         <div className="flex items-center">
           <Link to="/" className="text-3xl font-extrabold text-indigo-600 transition-colors hover:text-indigo-800">
             📰 The Daily Sun
           </Link>
         </div>
 
-        {/* Navigation Links */}
         <div className="flex items-center gap-8 text-gray-700 font-bold mx-auto">
           <Link 
             to="/" 
@@ -51,11 +50,9 @@ const NavBar = () => {
           </Link>
         </div>
 
-        {/* User Profile & Auth Buttons */}
         <div className="flex items-center gap-4">
           {user && (
             <>
-              {/* This is the updated "Update Profile" link */}
               <Link 
                 to="/auth/updateprofile" 
                 className="group relative font-bold text-green-500 transition-colors hover:text-green-700"
